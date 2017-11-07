@@ -15,15 +15,17 @@ const fieldRules = {
 const getRandomFormValue = (formValues = {}) => {
   return reduce(fieldRules,
     (formValues, config, field) => {
-      formValues[field] = ceil(random(config.min, config.max), 4);
+      formValues[field] = ceil(random(config.min, config.max), 2);
       return formValues;
     }, formValues);
 };
 
 const initialTimeState = {
   formValues: {
-    idType: 'placement'
+    idType: 'placement',
+    forecast_type: 'nightly'
   },
+  errorFields:[],
   loading: false,
   success: false
 };
@@ -58,6 +60,11 @@ export function formData(state = initialTimeState, action) {
         ...state,
         loading: false,
         success: false
+      };
+    case Actions.FORM_SET_ERROR_FIELDS:
+      return {
+        ...state,
+        errorFields: action.errorFields
       };
     default:
       return state

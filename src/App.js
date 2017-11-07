@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import './App.css';
 import createStore from './store/store';
 import Application from './component/application';
@@ -16,5 +17,4 @@ class App extends Component {
     );
   }
 }
-
 export default App;
